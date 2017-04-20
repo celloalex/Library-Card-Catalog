@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.Serialization;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +16,14 @@ namespace Library_Card_Catalog
         {
             //bool is in Program class and allows changes to be made within different methods
             Program.IsRunning = true;
-            Console.WriteLine("Welcome to the library! Please enter a filename to begin: ");
-            Console.ReadLine();
+
+            //creates default file on users desktop and informs user of the file being created 
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+            System.IO.FileStream file = System.IO.File.Create(path);
+
+            Console.WriteLine("By default the Library Card Catalog will be on your desktop.");
+            Console.ReadLine(); // holds program for user
+
 
 
             //do while loop that keeps running until user decides to exit
@@ -64,7 +72,7 @@ namespace Library_Card_Catalog
                     break;
                 case 2: //Add a book
                     Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
-                    //Console.readline is here for testing purposes
+                    //CardCatalog.AddBook();
                     Console.ReadLine();
                     break;
                 case 3: //Save and Exit
@@ -78,10 +86,37 @@ namespace Library_Card_Catalog
             }
         }
     }
-
-    public class CardCatalog
-    {
-
-    }
 }
+
+//Code to assist in writing xml Card catalog files and stuffs
+
+//    public class CardCatalog
+//    {
+
+//        static void WriteXML()
+//        {
+//            AddBook();
+//        }
+
+//        public class Book
+//        {
+//            public String title;
+//        }
+
+//        public static void AddBook()
+//        {
+//            Book overview = new Book();
+//            overview.title = "Library Card Catalog";
+//            System.Xml.Serialization.XmlSerializer writer =
+//                new System.Xml.Serialization.XmlSerializer(typeof(Book));
+
+//            var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+//            System.IO.FileStream file = System.IO.File.Create(path);
+
+//            writer.Serialize(file, overview);
+//            file.Close();
+//        }
+//    }
+
+//}
 
