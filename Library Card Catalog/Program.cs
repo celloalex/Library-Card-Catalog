@@ -14,6 +14,9 @@ namespace Library_Card_Catalog
         {
             //bool is in Program class and allows changes to be made within different methods
             Program.IsRunning = true;
+            Console.WriteLine("Welcome to the library! Please enter a filename to begin: ");
+            Console.ReadLine();
+
 
             //do while loop that keeps running until user decides to exit
             do
@@ -38,7 +41,7 @@ namespace Library_Card_Catalog
         static void MainMenu()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to the library! Please select from the following options:");
+            Console.WriteLine("Please select from the following options:");
             Console.WriteLine("1) List of all our books");
             Console.WriteLine("2) Add a Book to our catalog");
             Console.WriteLine("3) Save all changes and exit the program");
@@ -54,21 +57,21 @@ namespace Library_Card_Catalog
 
             switch (userInput)
             {
-                case 1:
+                case 1: //List of all books
                     Console.WriteLine("Fantastic this is a list of all our books:");
                     //Console.readline is here for testing purposes
                     Console.ReadLine();
                     break;
-                case 2:
+                case 2: //Add a book
                     Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
                     //Console.readline is here for testing purposes
                     Console.ReadLine();
                     break;
-                case 3:
+                case 3: //Save and Exit
                     Console.WriteLine("Thank you for visiting the library!");
                     Program.IsRunning = false;
                     break;
-                default:
+                default: //For any other improper entry
                     Console.WriteLine("Sorry... You did not enter valid input!");
                     Console.ReadLine();
                     break;
