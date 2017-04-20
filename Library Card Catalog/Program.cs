@@ -90,33 +90,51 @@ namespace Library_Card_Catalog
 
 //Code to assist in writing xml Card catalog files and stuffs
 
-//    public class CardCatalog
-//    {
+public class CardCatalog
+{
 
-//        static void WriteXML()
-//        {
-//            AddBook();
-//        }
+    static void WriteXML()
+    {
+        AddBook();
+    }
 
-//        public class Book
-//        {
-//            public String title;
-//        }
+    public class Book
+    {
+        public String title;
+    }
 
-//        public static void AddBook()
-//        {
-//            Book overview = new Book();
-//            overview.title = "Library Card Catalog";
-//            System.Xml.Serialization.XmlSerializer writer =
-//                new System.Xml.Serialization.XmlSerializer(typeof(Book));
+    public static void AddBook()
+    {
+        Book overview = new Book();
+        overview.title = "Library Card Catalog";
+        System.Xml.Serialization.XmlSerializer writer =
+            new System.Xml.Serialization.XmlSerializer(typeof(Book));
 
-//            var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-//            System.IO.FileStream file = System.IO.File.Create(path);
+        var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+        System.IO.FileStream file = System.IO.File.Create(path);
 
-//            writer.Serialize(file, overview);
-//            file.Close();
-//        }
-//    }
+        writer.Serialize(file, overview);
+        file.Close();
+    }
+}
 
+
+//static void Main()
+//{
+//    XmlDocument doc = new XmlDocument();
+//    XmlElement root = doc.CreateElement("Login");
+//    XmlElement id = doc.CreateElement("id");
+//    id.SetAttribute("userName", "Tushar");
+//    id.SetAttribute("passWord", "Tushar");
+//    XmlElement name = doc.CreateElement("Name");
+//    name.InnerText = "Tushar";
+//    XmlElement age = doc.CreateElement("Age");
+//    age.InnerText = "24";
+
+//    id.AppendChild(name);
+//    id.AppendChild(age);
+//    root.AppendChild(id);
+//    doc.AppendChild(root);
+
+//    doc.Save("test.xml");
 //}
-
