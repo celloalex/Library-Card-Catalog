@@ -124,6 +124,14 @@ public class CardCatalog
 }
 
 
+
+//This Creates a file on the desktop 
+//var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+//System.IO.FileStream file = System.IO.File.Create(path);
+
+
+
+
 //static void Main()
 //{
 //    XmlDocument doc = new XmlDocument();
@@ -142,4 +150,5 @@ public class CardCatalog
 //    doc.AppendChild(root);
 
 //    doc.Save("test.xml");
+//}
 //}
