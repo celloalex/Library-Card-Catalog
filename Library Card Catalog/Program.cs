@@ -71,6 +71,8 @@ namespace Library_Card_Catalog
             } while (Program.IsRunning == true);
         }
 
+        
+
         // Main display menu
         static void MainMenu()
         {
@@ -110,6 +112,8 @@ namespace Library_Card_Catalog
                     Console.ReadLine();
                     break;
             }
+
+
         }
         private static void AddBook()
         {
@@ -144,12 +148,6 @@ namespace Library_Card_Catalog
             //System.IO.FileStream file = System.IO.File.Create(path);
             //////////////System.IO.FileStream file = System.IO.File.AppendAllText(Program.,)
         }
-
-
-
-
-
-
 
             static void WriteXML()
         {
