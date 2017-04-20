@@ -122,7 +122,8 @@ namespace Library_Card_Catalog
             Console.WriteLine("Who is the author of {0}?", bookTitle);
             string bookAuthor = Console.ReadLine();
 
-            ObjectBook a = new ObjectBook(bookTitle,bookAuthor);      
+            ObjectBook a = new ObjectBook(bookTitle,bookAuthor);
+            ObjectBook.AddBook(bookTitle, bookAuthor);
         }
     }
 
@@ -139,10 +140,9 @@ namespace Library_Card_Catalog
             this.BookTitle = BookTitle;
         }
 
-        public static void AddBook()
+        public static void AddBook(string BookTitle, string BookAuthor)
         {
-            //System.IO.FileStream file = System.IO.File.Create(path);
-            //////////////System.IO.FileStream file = System.IO.File.AppendAllText(Program.,)
+            System.IO.File.AppendAllText(Program.Path, BookTitle + BookAuthor );
         }
 
 
@@ -151,17 +151,17 @@ namespace Library_Card_Catalog
 
 
 
-            static void WriteXML()
-        {
-            AddBook();
-        }
+       //     static void WriteXML()
+       // {
+       //     AddBook();
+       // }
 
-        public class Book
-        {
-            public String title;
-        }
+       // public class Book
+       // {
+       //     public String title;
+       // }
 
-       // public static void AddBook()
+       //// public static void AddBook()
         //{
 
 
