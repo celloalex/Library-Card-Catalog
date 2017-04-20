@@ -141,7 +141,8 @@ namespace Library_Card_Catalog
 
         public static void AddBook()
         {
-
+            //System.IO.FileStream file = System.IO.File.Create(path);
+            //////////////System.IO.FileStream file = System.IO.File.AppendAllText(Program.,)
         }
 
 
