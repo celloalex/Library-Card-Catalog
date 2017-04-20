@@ -76,12 +76,7 @@ namespace Library_Card_Catalog
         }
     }
 
-    class ListBooks
-    {
-        
-    }
-
-    class AddBooks
+    public class CardCatalog
     {
 
     }
