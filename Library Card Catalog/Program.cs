@@ -63,17 +63,17 @@ namespace Library_Card_Catalog
 
             switch (userInput)
             {
-                case (int)Status.BookList + 1:
+                case 1:
                     Console.WriteLine("Fantastic this is a list of all our books:");
                     //Console.readline is here for testing purposes
                     Console.ReadLine();
                     break;
-                case (int)Status.AddBook + 1:
+                case 2:
                     Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
                     //Console.readline is here for testing purposes
                     Console.ReadLine();
                     break;
-                case (int)Status.SaveAndExit + 1:
+                case 3:
                     Console.WriteLine("Thank you for visiting the library!");
                     //Console.readline is here for testing purposes
                     Program.IsRunning = false;
@@ -82,16 +82,8 @@ namespace Library_Card_Catalog
                     Console.WriteLine("Sorry... You did not enter valid input!");
                     Console.ReadLine();
                     break;
-                    //Test Comment
             }
         }
-    }
-
-    enum Status
-    {
-        BookList,
-        AddBook,
-        SaveAndExit
     }
 
     class UserInput
