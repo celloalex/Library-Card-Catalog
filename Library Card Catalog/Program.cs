@@ -12,7 +12,6 @@ namespace Library_Card_Catalog
         static void Main(string[] args)
         {
             Program.IsRunning = true;
-            //THINGS TO KEEP IN MIND
             //need someway to load file in the event that it has been run on users computer before
             //LOTSA LOTSA STUDYING MWUARGH (arnold mwuargh)
 
@@ -78,7 +77,6 @@ namespace Library_Card_Catalog
                     Console.WriteLine("Thank you for visiting the library!");
                     //Console.readline is here for testing purposes
                     Program.IsRunning = false;
-                    Console.ReadLine();
                     break;
                 default:
                     Console.WriteLine("Sorry... You did not enter valid input!");
