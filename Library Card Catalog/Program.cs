@@ -9,22 +9,15 @@ namespace Library_Card_Catalog
     class Program
     {
         public static bool IsRunning { get; set; }
+
         static void Main(string[] args)
         {
+            //bool is in Program class and allows changes to be made within different methods
             Program.IsRunning = true;
-            //need someway to load file in the event that it has been run on users computer before
-            //LOTSA LOTSA STUDYING MWUARGH (arnold mwuargh)
-
-            //bool to keep the do while loop running until user decideds to exit
-            //bool programEnd = true;
 
             //do while loop that keeps running until user decides to exit
-
-
             do
             {
-                //MainMenu();
-
                 //Found an exception will pop if user does not enter any input/or user input is horribly off... 
                 //I put a try catch to keep the exception at bay.
                 try
@@ -39,8 +32,6 @@ namespace Library_Card_Catalog
                     Console.ReadLine();
                 }
             } while (Program.IsRunning == true);
-            //CANNOT FIGURE OUT HOW TO MAKE THE PROGRAM TURN OFF!!!
-            Console.ReadLine();
         }
 
         // Main display menu
@@ -75,7 +66,6 @@ namespace Library_Card_Catalog
                     break;
                 case 3:
                     Console.WriteLine("Thank you for visiting the library!");
-                    //Console.readline is here for testing purposes
                     Program.IsRunning = false;
                     break;
                 default:
@@ -86,10 +76,14 @@ namespace Library_Card_Catalog
         }
     }
 
-    class UserInput
+    class ListBooks
     {
-        //Excitement about to start here m8!
-        //This is my change.
+        
+    }
+
+    class AddBooks
+    {
+
     }
 }
-//Alex dont need to work in no namespace
+
