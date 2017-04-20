@@ -146,14 +146,19 @@ namespace Library_Card_Catalog
         //method to addbooks by accessing file and appending text
         public static void AddBook(string BookTitle, string BookAuthor)
         {
-            System.IO.File.AppendAllText(Program.Path, BookTitle + BookAuthor + "/");
+            System.IO.File.AppendAllText(Program.Path, BookTitle + BookAuthor + "/" + Environment.NewLine);
         }
 
         //method to access file and write list of books on the console screen
         public static void ListBooks()
         {
-            
-            Console.WriteLine(System.IO.File.OpenText(Program.Path));
+            StreamReader reader = System.IO.File.OpenText(Program.Path);
+            while (!reader.EndOfStream)
+            {
+                Console.WriteLine(reader.ReadLine());
+            }
+            reader.Close();
+            reader.Dispose();
         }
 
 
