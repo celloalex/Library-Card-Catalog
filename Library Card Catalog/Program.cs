@@ -17,14 +17,12 @@ namespace Library_Card_Catalog
             //bool is in Program class and allows changes to be made within different methods
             Program.IsRunning = true;
 
-            try
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+           
+            //checks to see if "Library Card Catalog.xml exists or not
+            if(!System.IO.File.Exists(path))
             {
-
-            }
-            catch
-            {
-                //creates default file on users desktop and informs user of the file being created 
-                var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+                //creates default file on users desktop and informs user of the file being created                 
                 System.IO.FileStream file = System.IO.File.Create(path);
 
                 Console.WriteLine("User Notice: By default the Library Card Catalog will be on your desktop.");
