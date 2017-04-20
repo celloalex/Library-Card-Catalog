@@ -13,6 +13,8 @@ namespace Library_Card_Catalog
     {
         public static bool IsRunning { get; set; }
 
+        public static string Path { get; set; }
+
         static void Main(string[] args)
         {
             //bool is in Program class and allows changes to be made within different methods
@@ -30,20 +32,18 @@ namespace Library_Card_Catalog
             string name;
             name = Console.ReadLine();
 
-            //string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\" + name + ".xml";
-
             //Create a new file if no input from user
             if (name == "")
                 name = "Library Card Catalog";
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\" + name + ".xml";
+            Path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\" + name + ".xml";
 
             //checks to see if "Library Card Catalog.xml exists or not
-            if (!System.IO.File.Exists(path))
+            if (!System.IO.File.Exists(Path))
             {
                 //creates default file on users desktop and informs user of the file being created                 
-                System.IO.FileStream file = System.IO.File.Create(path);
-                Console.WriteLine("An XML file called {0} was created on your desktop.", name);
+                System.IO.FileStream file = System.IO.File.Create(Path);
+                Console.WriteLine("An XML file called {0} was created on your desktop. Press Enter", name);
                 Console.ReadLine();
             }
             else
@@ -51,11 +51,6 @@ namespace Library_Card_Catalog
                 Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
                 Console.ReadLine();
             }
-
-            Console.WriteLine("By default the Library Card Catalog will be on your desktop.");
-            Console.ReadLine(); // holds program for user
-
-
 
             //do while loop that keeps running until user decides to exit
             do
@@ -80,12 +75,12 @@ namespace Library_Card_Catalog
         static void MainMenu()
         {
             Console.Clear();
-            Console.WriteLine("Please select from the following options:");
+            Console.WriteLine("Library Options:");
             Console.WriteLine("1) List of all our books");
             Console.WriteLine("2) Add a Book to our catalog");
             Console.WriteLine("3) Save all changes and exit the program");
             Console.WriteLine();
-            Console.WriteLine("Please select one of the following choices.");
+            Console.WriteLine("Please select one of the following choices and press Enter.");
         }
 
         //Evaluates user Input from Main Menu 
@@ -216,3 +211,51 @@ namespace Library_Card_Catalog
 //    doc.Save("test.xml");
 //}
 //}
+
+
+
+//public class Robot : IDisposable
+//{
+//    private static List<bool> UsedCounter = new List<bool>();
+//    private static object Lock = new object();
+
+//    public int ID { get; private set; }
+
+//    public Robot()
+//    {
+
+//        lock (Lock)
+//        {
+//            int nextIndex = GetAvailableIndex();
+//            if (nextIndex == -1)
+//            {
+//                nextIndex = UsedCounter.Count;
+//                UsedCounter.Add(true);
+//            }
+
+//            ID = nextIndex;
+//        }
+//    }
+
+//    public void Dispose()
+//    {
+//        lock (Lock)
+//        {
+//            UsedCounter[ID] = false;
+//        }
+//    }
+
+
+//    private int GetAvailableIndex()
+//    {
+//        for (int i = 0; i < UsedCounter.Count; i++)
+//        {
+//            if (UsedCounter[i] == false)
+//            {
+//                return i;
+//            }
+//        }
+
+//        // Nothing available.
+//        return -1;
+//    }
