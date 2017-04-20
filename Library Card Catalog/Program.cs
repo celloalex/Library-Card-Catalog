@@ -93,18 +93,21 @@ namespace Library_Card_Catalog
             {
                 case 1: //List of all books
                     Console.WriteLine("Fantastic this is a list of all our books:");
-                    //Console.readline is here for testing purposes
+                    ObjectBook.ListBooks();
                     Console.ReadLine();
                     break;
+
                 case 2: //Add a book
                     Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
                     AddBook();
                     Console.ReadLine();
                     break;
+
                 case 3: //Save and Exit
                     Console.WriteLine("Thank you for visiting the library!");
                     Program.IsRunning = false;
                     break;
+
                 default: //For any other improper entry
                     Console.WriteLine("Sorry... You did not enter valid input!");
                     Console.ReadLine();
@@ -140,16 +143,31 @@ namespace Library_Card_Catalog
             this.BookTitle = BookTitle;
         }
 
+        //method to addbooks by accessing file and appending text
         public static void AddBook(string BookTitle, string BookAuthor)
         {
-            System.IO.File.AppendAllText(Program.Path, BookTitle + BookAuthor );
+            System.IO.File.AppendAllText(Program.Path, BookTitle + BookAuthor + "/");
+        }
+
+        //method to access file and write list of books on the console screen
+        public static void ListBooks()
+        {
+            
+            Console.WriteLine(System.IO.File.OpenText(Program.Path));
         }
 
 
 
 
 
-
+        //NOTES GALORE LOOK BELOW
+ //                |
+ //                |
+ //                |
+ //                |   
+ //             \  | /
+ //              \  /
+ //               \/
 
        //     static void WriteXML()
        // {
