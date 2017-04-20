@@ -17,12 +17,19 @@ namespace Library_Card_Catalog
             //bool is in Program class and allows changes to be made within different methods
             Program.IsRunning = true;
 
-            //creates default file on users desktop and informs user of the file being created 
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-            System.IO.FileStream file = System.IO.File.Create(path);
+            try
+            {
 
-            Console.WriteLine("By default the Library Card Catalog will be on your desktop.");
-            Console.ReadLine(); // holds program for user
+            }
+            catch
+            {
+                //creates default file on users desktop and informs user of the file being created 
+                var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+                System.IO.FileStream file = System.IO.File.Create(path);
+
+                Console.WriteLine("User Notice: By default the Library Card Catalog will be on your desktop.");
+                Console.ReadLine(); // holds program for user
+            }
 
 
 
@@ -107,8 +114,8 @@ namespace Library_Card_Catalog
 //        {
 //            Book overview = new Book();
 //            overview.title = "Library Card Catalog";
-//            System.Xml.Serialization.XmlSerializer writer =
-//                new System.Xml.Serialization.XmlSerializer(typeof(Book));
+
+//            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Book));
 
 //            var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
 //            System.IO.FileStream file = System.IO.File.Create(path);
@@ -119,4 +126,9 @@ namespace Library_Card_Catalog
 //    }
 
 //}
+
+
+    //This Creates a file on the desktop 
+//var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+//System.IO.FileStream file = System.IO.File.Create(path);
 
