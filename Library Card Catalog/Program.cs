@@ -88,6 +88,6 @@ namespace Library_Card_Catalog
 
     class UserInput
     {
-        //Excitement about to start here m8!!!!
+        //Excitement about to start here m8!
     }
 }
