@@ -8,37 +8,39 @@ namespace Library_Card_Catalog
 {
     class Program
     {
+        public static bool IsRunning { get; set; }
         static void Main(string[] args)
         {
-            //THINGS TO KEEP
+            Program.IsRunning = true;
+            //THINGS TO KEEP IN MIND
             //need someway to load file in the event that it has been run on users computer before
             //LOTSA LOTSA STUDYING MWUARGH (arnold mwuargh)
 
             //bool to keep the do while loop running until user decideds to exit
-            bool programEnd = true;
+            //bool programEnd = true;
 
             //do while loop that keeps running until user decides to exit
+
+
             do
             {
-                MainMenu();
+                //MainMenu();
 
                 //Found an exception will pop if user does not enter any input/or user input is horribly off... 
                 //I put a try catch to keep the exception at bay.
                 try
                 {
-                    string userStringInput = Console.ReadLine();
-                    int userInput = Convert.ToInt32(userStringInput);
-
-                    EvaluateUserInput(userInput);
+                    MainMenu();
+                    EvaluateUserInput(Convert.ToInt32(Console.ReadLine()));
                 }
                 catch
                 {
                     Console.WriteLine("Sorry your input was incorrect dingus...");
                     Console.WriteLine("Please hit the enter key ONCE to continue.");
-                    Console.ReadLine();          
-                }          
-            } while (programEnd == true);
-
+                    Console.ReadLine();
+                }
+            } while (Program.IsRunning == true);
+            //CANNOT FIGURE OUT HOW TO MAKE THE PROGRAM TURN OFF!!!
             Console.ReadLine();
         }
 
@@ -60,34 +62,37 @@ namespace Library_Card_Catalog
             Console.Clear();
             Console.WriteLine("You entered {0}...", userInput);
 
-            if(userInput == 1)
+            switch (userInput)
             {
-                Console.WriteLine("Fantastic this is a list of all our books:");
-                //Console.readline is here for testing purposes
-                Console.ReadLine();
-                //call another method
+                case (int)Status.BookList + 1:
+                    Console.WriteLine("Fantastic this is a list of all our books:");
+                    //Console.readline is here for testing purposes
+                    Console.ReadLine();
+                    break;
+                case (int)Status.AddBook + 1:
+                    Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
+                    //Console.readline is here for testing purposes
+                    Console.ReadLine();
+                    break;
+                case (int)Status.SaveAndExit + 1:
+                    Console.WriteLine("Thank you for visiting the library!");
+                    //Console.readline is here for testing purposes
+                    Program.IsRunning = false;
+                    Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Sorry... You did not enter valid input!");
+                    Console.ReadLine();
+                    break;
             }
-            else if (userInput == 2)
-            {
-                Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
-                //Console.readline is here for testing purposes
-                Console.ReadLine();
-                //call another method
-            }
-            else if(userInput == 3)
-            {
-                Console.WriteLine("Thank you for visiting the library!");
-                //Console.readline is here for testing purposes
-                Console.ReadLine();
-                //changes boolean to false to terminate program
-            }
-            else
-            {
-                Console.WriteLine("Sorry... You did not enter valid input!");
-                Console.ReadLine();
-            }
-
         }
+    }
+
+    enum Status
+    {
+        BookList,
+        AddBook,
+        SaveAndExit
     }
 
     class UserInput
