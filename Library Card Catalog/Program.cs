@@ -10,7 +10,7 @@ namespace Library_Card_Catalog
     {
         static void Main(string[] args)
         {
-            //THINGS TO KEEP IN MIND
+            //THINGS TO KEEP
             //need someway to load file in the event that it has been run on users computer before
             //LOTSA LOTSA STUDYING MWUARGH (arnold mwuargh)
 
