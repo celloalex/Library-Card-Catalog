@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Library_Card_Catalog
 {
@@ -18,18 +19,16 @@ namespace Library_Card_Catalog
             Program.IsRunning = true;
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-           
+
             //checks to see if "Library Card Catalog.xml exists or not
-            if(!System.IO.File.Exists(path))
+            if (!System.IO.File.Exists(path))
             {
                 //creates default file on users desktop and informs user of the file being created                 
                 System.IO.FileStream file = System.IO.File.Create(path);
+
+                Console.WriteLine("By default the Library Card Catalog will be on your desktop.");
+                Console.ReadLine(); // holds program for user
             }
-
-            Console.WriteLine("By default the Library Card Catalog will be on your desktop.");
-            Console.ReadLine(); // holds program for user
-
-
 
             //do while loop that keeps running until user decides to exit
             do
@@ -77,7 +76,7 @@ namespace Library_Card_Catalog
                     break;
                 case 2: //Add a book
                     Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
-                    //CardCatalog.AddBook();
+                    AddBook();
                     Console.ReadLine();
                     break;
                 case 3: //Save and Exit
@@ -90,36 +89,74 @@ namespace Library_Card_Catalog
                     break;
             }
         }
-    }
-}
+        private static void AddBook()
+        {
+            Console.Clear();
+            //asks the user what book they want to add
+            Console.WriteLine("What is the title of the book you are adding?");
+            string bookTitle = Console.ReadLine();
 
-//Code to assist in writing xml Card catalog files and stuffs
+            //follows up and asks user the author of the book they just entered
+            Console.WriteLine("Who is the author of {0}?", bookTitle);
+            string bookAuthor = Console.ReadLine();
 
-public class CardCatalog
-{
-
-    static void WriteXML()
-    {
-        AddBook();
-    }
-
-    public class Book
-    {
-        public String title;
+            ObjectBook a = new ObjectBook(bookTitle,bookAuthor);      
+        }
     }
 
-    public static void AddBook()
+    public class ObjectBook
     {
-        Book overview = new Book();
-        overview.title = "Library Card Catalog";
-        System.Xml.Serialization.XmlSerializer writer =
-            new System.Xml.Serialization.XmlSerializer(typeof(Book));
+        //book properties
+        public string BookTitle { get; set; }
+        public string BookAuthor { get; set; }
 
-        var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-        System.IO.FileStream file = System.IO.File.Create(path);
+        //Constructor
+        public ObjectBook(string BookTitle, string BookAuthor)
+        {
+            this.BookAuthor = BookAuthor;
+            this.BookTitle = BookTitle;
+        }
 
-        writer.Serialize(file, overview);
-        file.Close();
+        public static void AddBook()
+        {
+
+        }
+
+
+
+
+
+
+
+            static void WriteXML()
+        {
+            AddBook();
+        }
+
+        public class Book
+        {
+            public String title;
+        }
+
+       // public static void AddBook()
+        //{
+
+
+            //Console.WriteLine("What is the name of the book that you want to add?");
+            //string bookName = Console.ReadLine();
+
+            //Console.WriteLine("Who is the author of this book?");
+            //string bookAuthor = Console.ReadLine();
+
+            //System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Book));
+
+            //var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+
+            //XmlElement name = .CreateElement("Name");
+            //name.InnerText = "Tushar";
+            //XmlElement age = .CreateElement("Age");
+            //age.InnerText = "24";
+        
     }
 }
 
