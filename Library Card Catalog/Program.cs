@@ -126,7 +126,30 @@ namespace Library_Card_Catalog
 //}
 
 
-    //This Creates a file on the desktop 
+//This Creates a file on the desktop 
 //var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
 //System.IO.FileStream file = System.IO.File.Create(path);
 
+
+
+
+//static void Main()
+//{
+//    XmlDocument doc = new XmlDocument();
+//    XmlElement root = doc.CreateElement("Login");
+//    XmlElement id = doc.CreateElement("id");
+//    id.SetAttribute("userName", "Tushar");
+//    id.SetAttribute("passWord", "Tushar");
+//    XmlElement name = doc.CreateElement("Name");
+//    name.InnerText = "Tushar";
+//    XmlElement age = doc.CreateElement("Age");
+//    age.InnerText = "24";
+
+//    id.AppendChild(name);
+//    id.AppendChild(age);
+//    root.AppendChild(id);
+//    doc.AppendChild(root);
+
+//    doc.Save("test.xml");
+//}
+//}
