@@ -118,7 +118,10 @@ namespace Library_Card_Catalog
             {
                 case 1: //List of all books
                     Console.WriteLine("Fantastic this is a list of all our books:\n");
-                    //foreach(Books in myBooks)
+                    foreach (var book in myBooks)
+                    {
+                        Console.WriteLine("Title: {1} Author: {0}\n", book.BookAuthor, book.BookAuthor);
+                    }
                     //ObjectBook.ListBooks();
                     Program.ReadFile(Path);
                     Console.ReadLine();
