@@ -68,8 +68,8 @@ namespace Library_Card_Catalog
                 }
                 catch
                 {
-                    Console.WriteLine("Sorry your input was incorrect dingus...");
-                    Console.WriteLine("Please hit the enter key ONCE to continue.");
+                    Console.WriteLine("There was an error, dingus...");
+                    Console.WriteLine("Please hit the Enter key ONCE to continue.");
                     Console.ReadLine();
                 }
             } while (Program.IsRunning == true);
@@ -104,7 +104,6 @@ namespace Library_Card_Catalog
                 case 2: //Add a book
                     Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
                     AddBook();
-                    Console.ReadLine();
                     break;
 
                 case 3: //Save and Exit
@@ -124,14 +123,22 @@ namespace Library_Card_Catalog
             //asks the user what book they want to add
             Console.WriteLine("What is the title of the book you are adding?");
             string bookTitle = Console.ReadLine();
-
+            
             //follows up and asks user the author of the book they just entered
             Console.WriteLine("Who is the author of {0}?", bookTitle);
             string bookAuthor = Console.ReadLine();
 
-            //kicks book title/author out to ObjectBook method to get sorted out
-            ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
-            ObjectBook.AddBook(bookTitle, bookAuthor);
+            if(bookTitle == "" || bookAuthor == "")
+            {
+                Console.WriteLine("Sorry, but both the Title and the Author must contain data.");
+                Console.ReadLine();
+            }
+            else
+            {
+                //kicks book title/author out to ObjectBook method to get sorted out
+                ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
+                ObjectBook.AddBook(bookTitle, bookAuthor);
+            }
         }
     }
 
