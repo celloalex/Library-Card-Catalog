@@ -168,8 +168,11 @@ namespace Library_Card_Catalog
         public static void ListBooks()
         {
             StreamReader reader = System.IO.File.OpenText(Program.Path);
+            int count = 1;
             while (!reader.EndOfStream)
             {
+                Console.WriteLine(count + ".) ");
+                count++;
                 Console.WriteLine(reader.ReadLine());
             }
             Console.WriteLine("\nPress Enter to return to Menu.");
