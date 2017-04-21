@@ -158,6 +158,8 @@ namespace Library_Card_Catalog
                 Books Booka = new Books();
                 Booka.BookTitle = bookTitle;
                 Booka.BookAuthor = bookAuthor;
+                List<Books> myBook = new List<Books>() { };
+                Books book = new Books() { BookTitle = bookTitle, BookAuthor = bookAuthor };
                 Booka.addBook(Program.Path, List<Books>);
             }
         }
