@@ -83,7 +83,7 @@ namespace Library_Card_Catalog
             Console.WriteLine("Library Options:");
             Console.WriteLine("1) List of all our books");
             Console.WriteLine("2) Add a Book to our catalog");
-            Console.WriteLine("3) Save all changes and exit the program");
+            Console.WriteLine("3) Exit the program");
             Console.WriteLine();
             Console.WriteLine("Please select one of the following choices and press Enter.");
         }
