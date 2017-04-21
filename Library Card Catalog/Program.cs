@@ -56,7 +56,7 @@ namespace Library_Card_Catalog
             {
                 Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
                 Console.ReadLine();
-                //Immediately open the file and create a list from what's in it. Path is an important variable.
+                //Immediately open the file and create a list from what's in it.
                 ReadFile(Path);
             }      
 
@@ -80,13 +80,15 @@ namespace Library_Card_Catalog
             } while (Program.IsRunning == true);
         }
 
-        public static void ReadFile(string fileName)
+        public static List<Books> ReadFile(string fileName)
         {
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
                 var XML = new XmlSerializer(typeof(List<Books>));
 
-                List<Books> myBooks = (List<Books>)XML.Deserialize(stream);
+                List<Books> oldList = (List<Books>)XML.Deserialize(stream);
+
+                return oldList;
             }
         }
 
