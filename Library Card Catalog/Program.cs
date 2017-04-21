@@ -122,8 +122,9 @@ namespace Library_Card_Catalog
                     Console.WriteLine("Fantastic this is a list of all our books:\n");
                     foreach (var book in myBooks)
                     {
-                        Console.WriteLine("Title: {1} Author: {0}\n", book.BookAuthor, book.BookAuthor);
+                        Console.WriteLine("Title: {0} Author: {1}\n", book.BookTitle, book.BookAuthor);
                     }
+                    Console.WriteLine("Press Enter to return to Menu.");
                     //ObjectBook.ListBooks();
                     //Program.ReadFile(Path);
                     Console.ReadLine();
