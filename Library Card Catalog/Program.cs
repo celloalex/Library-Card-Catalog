@@ -56,10 +56,9 @@ namespace Library_Card_Catalog
             {
                 Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
                 Console.ReadLine();
-            }
-
-            //Immediately open the file and create a list from what's in it. Path is an important variable.
-            ReadFile(Path);        
+                //Immediately open the file and create a list from what's in it. Path is an important variable.
+                ReadFile(Path);
+            }      
 
             //do while loop that keeps running until user decides to exit
             do
