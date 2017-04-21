@@ -171,7 +171,7 @@ namespace Library_Card_Catalog
             int count = 1;
             while (!reader.EndOfStream)
             {
-                Console.WriteLine(count + ".) ");
+                Console.Write(count + ".) ");
                 count++;
                 Console.WriteLine(reader.ReadLine());
             }
