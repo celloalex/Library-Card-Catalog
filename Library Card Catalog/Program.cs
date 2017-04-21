@@ -155,7 +155,6 @@ namespace Library_Card_Catalog
                 //ObjectBook.AddBook(bookTitle, bookAuthor);
                 Books bookA = new Books();
                 bookA.BookTitle = bookTitle;
-                bookA.BookAuthor = bookAuthor;
                 myBooks.Add(bookA);
             }
         }
