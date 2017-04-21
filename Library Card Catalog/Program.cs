@@ -142,59 +142,94 @@ namespace Library_Card_Catalog
             }
         }
     }
+    // WORKING NO CHANGEY
+    //    public class ObjectBook
+    //    {
+    //        //book properties
+    //        public string BookTitle { get; set; }
+    //        public string BookAuthor { get; set; }
+
+    //        //Constructor
+    //        public ObjectBook(string BookTitle, string BookAuthor)
+    //        {
+    //            this.BookAuthor = BookAuthor;
+    //            this.BookTitle = BookTitle;
+    //        }
+
+    //        //method to add books by accessing file and adding a book/ author line by line
+    //        //both are labeled for readability can be modified later if a bot needs to comb the program
+    //        public static void AddBook(string BookTitle, string BookAuthor)
+    //        {
+    //            //writes title to to file
+    //            string filePrintTitle = ("Title: " + BookTitle);
+    //            System.IO.File.AppendAllText(Program.Path, filePrintTitle + Environment.NewLine);
+
+    //            //writes author to file
+    //            string filePrintAuthor = ("Author: " + BookAuthor);
+    //            System.IO.File.AppendAllText(Program.Path, filePrintAuthor + Environment.NewLine);
+
+    //        }
+
+    //        //method to access file and write list of books on the console screen
+    //        public static void ListBooks()
+    //        {
+    //            StreamReader reader = System.IO.File.OpenText(Program.Path);
+    //            int count = 1;
+    //            while (!reader.EndOfStream)
+    //            {
+    //                Console.Write(count + ".) ");
+    //                count++;
+
+    //                Console.WriteLine(reader.ReadLine());
+    //                Console.WriteLine("    " + reader.ReadLine());
+    //            }
+    //            Console.WriteLine("\nPress Enter to return to Menu.");
+    //            //helps with resource management and memory usage - according to joe "streamreader can get a bit weird"
+    //            reader.Close();
+    //            reader.Dispose();
+    //        }
+
+
 
     public class ObjectBook
     {
-        //book properties
-        public string BookTitle { get; set; }
-        public string BookAuthor { get; set; }
 
-        //Constructor
-        public ObjectBook(string BookTitle, string BookAuthor)
-        {
-            this.BookAuthor = BookAuthor;
-            this.BookTitle = BookTitle;
-        }
-
-        //method to add books by accessing file and adding a book/ author line by line
-        //both are labeled for readability can be modified later if a bot needs to comb the program
-        public static void AddBook(string BookTitle, string BookAuthor)
-        {
-            //writes title to to file
-            string filePrintTitle = ("Title: " + BookTitle);
-            System.IO.File.AppendAllText(Program.Path, filePrintTitle + Environment.NewLine);
-
-            //writes author to file
-            string filePrintAuthor = ("Author: " + BookAuthor);
-            System.IO.File.AppendAllText(Program.Path, filePrintAuthor + Environment.NewLine);
-
-        }
-
-        //method to access file and write list of books on the console screen
-        public static void ListBooks()
-        {
-            StreamReader reader = System.IO.File.OpenText(Program.Path);
-            int count = 1;
-            while (!reader.EndOfStream)
-            {
-                Console.Write(count + ".) ");
-                count++;
-
-                Console.WriteLine(reader.ReadLine());
-                Console.WriteLine("    " + reader.ReadLine());
-            }
-            Console.WriteLine("\nPress Enter to return to Menu.");
-            //helps with resource management and memory usage - according to joe "streamreader can get a bit weird"
-            reader.Close();
-            reader.Dispose();
-        }
     }
 }
 
 
+////more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes
+//public class XMLWrite
+//{
+
+//    static void Main(string[] args)
+//    {
+//        WriteXML();
+//    }
+
+//    public class Book
+//    {
+//        public String title;
+//    }
+
+//    public static void WriteXML()
+//    {
+//        Book overview = new Book();
+//        overview.title = "Serialization Overview";
+//        System.Xml.Serialization.XmlSerializer writer =
+//            new System.Xml.Serialization.XmlSerializer(typeof(Book));
+
+//        var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//SerializationOverview.xml";
+//        System.IO.FileStream file = System.IO.File.Create(path);
+
+//        writer.Serialize(file, overview);
+//        file.Close();
+//    }
+//}
 
 
-//NOTES GALORE LOOK BELOW
+
+////NOTES GALORE LOOK BELOW
 //                |
 //                |
 //                |
