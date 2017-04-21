@@ -47,7 +47,7 @@ namespace Library_Card_Catalog
                 //creates default file on users desktop and informs user of the file being created                 
                 System.IO.FileStream file = System.IO.File.Create(Path);
                 file.Close();
-                Console.WriteLine("An XML file called {0} was created on your desktop. Press Enter", name);
+                Console.WriteLine("An XML file called {0} was created on your desktop. Press Enter.", name);
                 Console.ReadLine();
             }
             else
@@ -97,7 +97,7 @@ namespace Library_Card_Catalog
             switch (userInput)
             {
                 case 1: //List of all books
-                    Console.WriteLine("Fantastic this is a list of all our books:");
+                    Console.WriteLine("Fantastic this is a list of all our books:\n");
                     ObjectBook.ListBooks();
                     Console.ReadLine();
                     break;
@@ -172,7 +172,7 @@ namespace Library_Card_Catalog
             {
                 Console.WriteLine(reader.ReadLine());
             }
-
+            Console.WriteLine("\nPress Enter to return to Menu.");
             //helps with resource management and memory usage - according to joe "streamreader can get a bit weird"
             reader.Close();
             reader.Dispose();
