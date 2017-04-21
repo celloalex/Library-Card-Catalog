@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+
 namespace Library_Card_Catalog
 {
     class Program
@@ -25,7 +26,8 @@ namespace Library_Card_Catalog
 
             Console.Clear();
             Console.WriteLine("To begin, we need to open your XML file.");
-            Console.WriteLine("Please input a filename that you would like to read.\nIf it does not exist, a new file will be created on your desktop with that name.");
+            Console.WriteLine("Please input a filename that you would like to read." +
+                "\nIf it does not exist, a new file will be created on your desktop with that name.");
             Console.WriteLine("If you would like to create/open the default file, just press enter.");
 
             //Read/Create a file from user input
@@ -36,6 +38,7 @@ namespace Library_Card_Catalog
             if (name == "")
                 name = "Library Card Catalog";
 
+            //sets path of file
             Path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\" + name + ".xml";
 
             //checks to see if "Library Card Catalog.xml exists or not
@@ -125,6 +128,7 @@ namespace Library_Card_Catalog
             Console.WriteLine("Who is the author of {0}?", bookTitle);
             string bookAuthor = Console.ReadLine();
 
+            //kicks book title/author out to ObjectBook method to get sorted out
             ObjectBook a = new ObjectBook(bookTitle,bookAuthor);
             ObjectBook.AddBook(bookTitle, bookAuthor);
         }
@@ -143,10 +147,12 @@ namespace Library_Card_Catalog
             this.BookTitle = BookTitle;
         }
 
-        //method to addbooks by accessing file and appending text
+        //method to add books by accessing file and adding a book/ author line by line
+        //both are labeled for readability can be modified later if a bot needs to comb the program
         public static void AddBook(string BookTitle, string BookAuthor)
         {
-            System.IO.File.AppendAllText(Program.Path, BookTitle + BookAuthor + "/" + Environment.NewLine);
+            string filePrint = ("Title: " + BookTitle + " Author: " + BookAuthor);
+            System.IO.File.AppendAllText(Program.Path, filePrint + Environment.NewLine);
         }
 
         //method to access file and write list of books on the console screen
@@ -157,6 +163,8 @@ namespace Library_Card_Catalog
             {
                 Console.WriteLine(reader.ReadLine());
             }
+
+            //helps with resource management and memory usage - according to joe "streamreader can get a bit weird"
             reader.Close();
             reader.Dispose();
         }
