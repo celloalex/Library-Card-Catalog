@@ -66,9 +66,10 @@ namespace Library_Card_Catalog
                     MainMenu();
                     EvaluateUserInput(Convert.ToInt32(Console.ReadLine()));
                 }
-                catch
+                catch (Exception ex)
                 {
                     Console.WriteLine("There was an error, dingus...");
+                    Console.WriteLine(ex.Message);
                     Console.WriteLine("Please hit the Enter key ONCE to continue.");
                     Console.ReadLine();
                 }
