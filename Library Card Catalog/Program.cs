@@ -217,18 +217,18 @@ namespace Library_Card_Catalog
         public string BookTitle { get; set; }
         public string BookAuthor { get; set; }
 
-        public void addBook(string fileName, List<ClassXml> books)
+        public void addBook(string fileName, List<Books> books)
         {
             using (var stream = new FileStream(Program.Path, FileMode.Create))
             {
-                var xmlInput = new XmlSerializer(typeof(List<ClassXml>));
+                var xmlInput = new XmlSerializer(typeof(List<Books>));
                 xmlInput.Serialize(stream, books);
             }
 
             using (var stream = new FileStream(Program.Path, FileMode.Open))
             {
-                var xmlSave = new XmlSerializer(typeof(List<ClassXml>));
-                List<ClassXml> save = (List<ClassXml>)xmlSave.Deserialize(stream);
+                var xmlSave = new XmlSerializer(typeof(List<Books>));
+                List<Books> save = (List<Books>)xmlSave.Deserialize(stream);
 
             }
         }
