@@ -161,7 +161,7 @@ namespace Library_Card_Catalog
             string bookAuthor = Console.ReadLine();
 
             //Easter eggs a part of programmer fundamentals!!!
-            if (bookAuthor == "Bob Tabor" || bookAuthor == "bob tabor")
+            if (bookAuthor == "Bob Tabor" || bookAuthor == "bob tabor" || bookAuthor == "bob" || bookAuthor == "BoB")
             {
                 do
                 {
