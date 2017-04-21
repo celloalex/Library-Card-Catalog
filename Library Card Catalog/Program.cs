@@ -158,7 +158,7 @@ namespace Library_Card_Catalog
                 Books Booka = new Books();
                 Booka.BookTitle = bookTitle;
                 Booka.BookAuthor = bookAuthor;
-                Booka.addBook(Program.Path);
+                Booka.addBook(Program.Path, List<Books>);
             }
         }
     }
@@ -217,15 +217,21 @@ namespace Library_Card_Catalog
         public string BookTitle { get; set; }
         public string BookAuthor { get; set; }
 
-        public void addBook(string fileName)
+        public void addBook(string fileName, List<ClassXml> books)
         {
-            using (var stream = File.OpenWrite(Program.Path))
+            using (var stream = new FileStream(Program.Path, FileMode.Create))
             {
-                var xmlInput = new XmlSerializer(typeof(Books));
-                xmlInput.Serialize(stream,this);
+                var xmlInput = new XmlSerializer(typeof(List<ClassXml>));
+                xmlInput.Serialize(stream, books);
+            }
+
+            using (var stream = new FileStream(Program.Path, FileMode.Open))
+            {
+                var xmlSave = new XmlSerializer(typeof(List<ClassXml>));
+                List<ClassXml> save = (List<ClassXml>)xmlSave.Deserialize(stream);
+
             }
         }
-
     }
 }
 
