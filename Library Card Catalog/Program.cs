@@ -16,6 +16,8 @@ namespace Library_Card_Catalog
 
         public static string Path { get; set; }
 
+        List<Books> myBooks = new List<Books>();
+
         static void Main(string[] args)
         {
             //bool is in Program class and allows changes to be made within different methods
@@ -55,6 +57,10 @@ namespace Library_Card_Catalog
                 Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
                 Console.ReadLine();
             }
+        
+            //Immediately open the file and create a list from what's in it. Path is an important variable.
+            
+        
 
             //do while loop that keeps running until user decides to exit
             do
@@ -74,6 +80,16 @@ namespace Library_Card_Catalog
                     Console.ReadLine();
                 }
             } while (Program.IsRunning == true);
+        }
+
+        public static void ReadFile(string fileName)
+        {
+            using (var stream = new FileStream(fileName, FileMode.Open))
+            {
+                var XML = new XmlSerializer(typeof(List<Books>));
+
+                List<Books> myBooks = (List<Books>)XML.Deserialize(stream);
+            }
         }
 
         // Main display menu
@@ -139,7 +155,7 @@ namespace Library_Card_Catalog
                 //kicks book title/author out to ObjectBook method to get sorted out
                 //ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
                 //ObjectBook.AddBook(bookTitle, bookAuthor);
-                ClassXml Booka = new ClassXml();
+                Books Booka = new Books();
                 Booka.BookTitle = bookTitle;
                 Booka.BookAuthor = bookAuthor;
                 Booka.addBook(Program.Path);
@@ -195,7 +211,7 @@ namespace Library_Card_Catalog
 
 
 
-    public class ClassXml
+    public class Books
     {
         //book properties
         public string BookTitle { get; set; }
@@ -205,7 +221,7 @@ namespace Library_Card_Catalog
         {
             using (var stream = File.OpenWrite(Program.Path))
             {
-                var xmlInput = new XmlSerializer(typeof(ClassXml));
+                var xmlInput = new XmlSerializer(typeof(Books));
                 xmlInput.Serialize(stream,this);
             }
         }
