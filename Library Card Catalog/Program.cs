@@ -80,14 +80,14 @@ namespace Library_Card_Catalog
             } while (Program.IsRunning == true);
         }
 
-        public static List<Books> ReadFile(string fileName)
+        public static void ReadFile(string fileName)
         {
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
                 try
                 {
                     var XML = new XmlSerializer(typeof(List<Books>));
-                    List<Books> myBooks = (List<Books>)XML.Deserialize(stream);
+                    myBooks = (List<Books>)XML.Deserialize(stream);
                 }
                 catch
                 {
