@@ -123,7 +123,7 @@ namespace Library_Card_Catalog
                         Console.WriteLine("Title: {1} Author: {0}\n", book.BookAuthor, book.BookAuthor);
                     }
                     //ObjectBook.ListBooks();
-                    Program.ReadFile(Path);
+                    //Program.ReadFile(Path);
                     Console.ReadLine();
                     break;
 
