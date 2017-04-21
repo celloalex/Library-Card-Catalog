@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-
+using System.Xml.Serialization;
 
 namespace Library_Card_Catalog
 {
@@ -98,7 +98,7 @@ namespace Library_Card_Catalog
             {
                 case 1: //List of all books
                     Console.WriteLine("Fantastic this is a list of all our books:\n");
-                    ObjectBook.ListBooks();
+                    //ObjectBook.ListBooks();
                     Console.ReadLine();
                     break;
 
@@ -137,12 +137,16 @@ namespace Library_Card_Catalog
             else
             {
                 //kicks book title/author out to ObjectBook method to get sorted out
-                ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
-                ObjectBook.AddBook(bookTitle, bookAuthor);
+                //ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
+                //ObjectBook.AddBook(bookTitle, bookAuthor);
+                ClassXml Booka = new ClassXml();
+                Booka.BookTitle = bookTitle;
+                Booka.BookAuthor = bookAuthor;
+                Booka.addBook(Program.Path);
             }
         }
     }
-    // WORKING NO CHANGEY
+    // WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY
     //    public class ObjectBook
     //    {
     //        //book properties
@@ -191,8 +195,20 @@ namespace Library_Card_Catalog
 
 
 
-    public class ObjectBook
+    public class ClassXml
     {
+        //book properties
+        public string BookTitle { get; set; }
+        public string BookAuthor { get; set; }
+
+        public void addBook(string fileName)
+        {
+            using (var stream = File.OpenWrite(Program.Path))
+            {
+                var xmlInput = new XmlSerializer(typeof(ClassXml));
+                xmlInput.Serialize(stream,this);
+            }
+        }
 
     }
 }
