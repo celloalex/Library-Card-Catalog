@@ -176,51 +176,51 @@ namespace Library_Card_Catalog
             reader.Close();
             reader.Dispose();
         }
-
-
-
-
-
-        //NOTES GALORE LOOK BELOW
- //                |
- //                |
- //                |
- //                |   
- //             \  | /
- //              \  /
- //               \/
-
-       //     static void WriteXML()
-       // {
-       //     AddBook();
-       // }
-
-       // public class Book
-       // {
-       //     public String title;
-       // }
-
-       //// public static void AddBook()
-        //{
-
-
-            //Console.WriteLine("What is the name of the book that you want to add?");
-            //string bookName = Console.ReadLine();
-
-            //Console.WriteLine("Who is the author of this book?");
-            //string bookAuthor = Console.ReadLine();
-
-            //System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Book));
-
-            //var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-
-            //XmlElement name = .CreateElement("Name");
-            //name.InnerText = "Tushar";
-            //XmlElement age = .CreateElement("Age");
-            //age.InnerText = "24";
-        
     }
 }
+
+
+
+
+//NOTES GALORE LOOK BELOW
+//                |
+//                |
+//                |
+//                |   
+//             \  | /
+//              \  /
+//               \/
+
+//     static void WriteXML()
+// {
+//     AddBook();
+// }
+
+// public class Book
+// {
+//     public String title;
+// }
+
+//// public static void AddBook()
+//{
+
+
+//Console.WriteLine("What is the name of the book that you want to add?");
+//string bookName = Console.ReadLine();
+
+//Console.WriteLine("Who is the author of this book?");
+//string bookAuthor = Console.ReadLine();
+
+//System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Book));
+
+//var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
+
+//XmlElement name = .CreateElement("Name");
+//name.InnerText = "Tushar";
+//XmlElement age = .CreateElement("Age");
+//age.InnerText = "24";
+
+
 
 
 
