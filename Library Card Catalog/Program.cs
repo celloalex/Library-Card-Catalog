@@ -16,7 +16,7 @@ namespace Library_Card_Catalog
 
         public static string Path { get; set; }
 
-        static List<Books>  myBooks = new List<Books>();
+        static List<Books> myBooks = new List<Books>();
 
         static void Main(string[] args)
         {
@@ -112,6 +112,7 @@ namespace Library_Card_Catalog
             {
                 case 1: //List of all books
                     Console.WriteLine("Fantastic this is a list of all our books:\n");
+                    //foreach(Books in myBooks)
                     //ObjectBook.ListBooks();
                     Console.ReadLine();
                     break;
@@ -123,6 +124,7 @@ namespace Library_Card_Catalog
 
                 case 3: //Save and Exit
                     Console.WriteLine("Thank you for visiting the library!");
+                    Books.saveList(Path, myBooks);
                     Program.IsRunning = false;
                     break;
 
@@ -215,7 +217,7 @@ namespace Library_Card_Catalog
         public string BookTitle { get; set; }
         public string BookAuthor { get; set; }
 
-        public void addBook(string fileName, List<Books> books)
+        public static void saveList(string fileName, List<Books> books)
         {
             using (var stream = new FileStream(Program.Path, FileMode.Create))
             {
