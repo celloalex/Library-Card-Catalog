@@ -49,12 +49,12 @@ namespace Library_Card_Catalog
                 //creates default file on users desktop and informs user of the file being created                 
                 System.IO.FileStream file = System.IO.File.Create(Path);
                 file.Close();
-                Console.WriteLine("An XML file called {0} was created on your desktop. Press Enter.", name);
+                Console.WriteLine("An XML file called \"{0}\" was created on your desktop. Press Enter.", name);
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
+                Console.WriteLine("You are going to open the file called \"{0}\". Press Enter.", name);
                 Console.ReadLine();
 
                 //Immediately open the file and create a list from what's in it.
@@ -91,8 +91,12 @@ namespace Library_Card_Catalog
                     var XML = new XmlSerializer(typeof(List<Books>));
                     myBooks = (List<Books>)XML.Deserialize(stream);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Console.WriteLine("There was an error, dingus...");
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Please hit the Enter key ONCE to continue.");
+                    Console.ReadLine();
                     var XML = new XmlSerializer(typeof(List<Books>));
                 }
             }
@@ -105,7 +109,8 @@ namespace Library_Card_Catalog
             Console.WriteLine("Library Options:");
             Console.WriteLine("1) List of all our books");
             Console.WriteLine("2) Add a Book to our catalog");
-            Console.WriteLine("3) Save all changes and exit the program");
+            Console.WriteLine("3) Remove a Book from our catalog");
+            Console.WriteLine("4) Save all changes and exit the program");
             Console.WriteLine();
             Console.WriteLine("Please select one of the following choices and press Enter.");
         }
@@ -114,29 +119,30 @@ namespace Library_Card_Catalog
         private static void EvaluateUserInput(int userInput)
         {
             Console.Clear();
-            Console.WriteLine("You entered {0}...", userInput);
 
             switch (userInput)
             {
                 case 1: //List of all books
                     Console.WriteLine("Fantastic this is a list of all our books:\n");
-                    foreach (var book in myBooks)
-                    {
-                        Console.WriteLine("Title: {0} Author: {1}\n", book.BookTitle, book.BookAuthor);
-                    }
+                    ListBooks();
                     Console.WriteLine("Press Enter to return to Menu.");
-                    //ObjectBook.ListBooks();
-                    //Program.ReadFile(Path);
                     Console.ReadLine();
                     break;
 
                 case 2: //Add a book
-                    Console.WriteLine("Fantastic! Lets add a new book to our catalog.");
                     AddBook();
+                    Console.WriteLine("Press Enter to return to Menu.");
+                    Console.ReadLine();
                     break;
 
-                case 3: //Save and Exit
-                    Console.WriteLine("Thank you for visiting the library!");
+                case 3: //Remove a book
+                    RemoveBook();
+                    Console.WriteLine("Press Enter to return to Menu.");
+                    Console.ReadLine();
+                    break;
+
+                case 4: //Save and Exit
+                    Console.WriteLine("Thank you for visiting our library!");
                     Books.saveList(Path, myBooks);
                     Program.IsRunning = false;
                     break;
@@ -148,10 +154,21 @@ namespace Library_Card_Catalog
             }
         }
 
-        //asks user for input on what to add to catalog
-        private static void AddBook()
+    private static void ListBooks()
+        {
+            int i = 1;
+            foreach (var book in myBooks)
+            {
+                Console.WriteLine("{2}) Title: {0} Author: {1}\n", book.BookTitle, book.BookAuthor, i);
+                i++;
+            }
+        }
+        
+    //asks user for input on what to add to catalog
+    private static void AddBook()
         {
             Console.Clear();
+            Console.WriteLine("Awesome! Lets add a new book to our catalog.");
             //asks the user what book they want to add
             Console.WriteLine("What is the title of the book you are adding?");
             string bookTitle = Console.ReadLine();
@@ -184,6 +201,38 @@ namespace Library_Card_Catalog
                 myBooks.Add(bookA);
             }
         }
+
+        private static void RemoveBook()
+        {
+            Console.Clear();
+            Console.WriteLine("Alrigh! Let's remove a book.");
+            ListBooks();
+            //asks the user what book they want to remove
+            Console.WriteLine("What is the number of the book you would like to remove? \nPress \"Enter\" to exit.");
+            string numberString = Console.ReadLine();
+            if (numberString == "")
+            {
+                Console.Clear();
+                Console.WriteLine("It doesn't look like you want to delete a book.");
+            }
+            else
+            {
+                int num = Convert.ToInt32(numberString) - 1;
+                if (num > 0 && num < myBooks.Count())
+                {
+                    myBooks.RemoveAt(num);
+                    //clears the screen to show removed book
+                    Console.Clear();
+                    ListBooks();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You didn't select a proper number.");
+                }
+            }           
+        }
+
     }
 
     public class Books
