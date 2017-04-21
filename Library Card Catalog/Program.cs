@@ -84,9 +84,15 @@ namespace Library_Card_Catalog
         {
             using (var stream = new FileStream(fileName, FileMode.Open))
             {
-                var XML = new XmlSerializer(typeof(List<Books>));
-
-                List<Books> myBooks = (List<Books>)XML.Deserialize(stream);
+                try
+                {
+                    var XML = new XmlSerializer(typeof(List<Books>));
+                    List<Books> myBooks = (List<Books>)XML.Deserialize(stream);
+                }
+                catch
+                {
+                    var XML = new XmlSerializer(typeof(List<Books>));
+                }
             }
         }
 
@@ -114,6 +120,7 @@ namespace Library_Card_Catalog
                     Console.WriteLine("Fantastic this is a list of all our books:\n");
                     //foreach(Books in myBooks)
                     //ObjectBook.ListBooks();
+                    Program.ReadFile(Path);
                     Console.ReadLine();
                     break;
 
