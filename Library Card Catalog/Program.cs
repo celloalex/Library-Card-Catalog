@@ -160,8 +160,14 @@ namespace Library_Card_Catalog
         //both are labeled for readability can be modified later if a bot needs to comb the program
         public static void AddBook(string BookTitle, string BookAuthor)
         {
-            string filePrint = ("Title: " + BookTitle + " Author: " + BookAuthor);
-            System.IO.File.AppendAllText(Program.Path, filePrint + Environment.NewLine);
+            //writes title to to file
+            string filePrintTitle = ("Title: " + BookTitle);
+            System.IO.File.AppendAllText(Program.Path, filePrintTitle + Environment.NewLine);
+
+            //writes author to file
+            string filePrintAuthor = ("Author: " + BookAuthor);
+            System.IO.File.AppendAllText(Program.Path, filePrintAuthor + Environment.NewLine);
+
         }
 
         //method to access file and write list of books on the console screen
@@ -173,7 +179,9 @@ namespace Library_Card_Catalog
             {
                 Console.Write(count + ".) ");
                 count++;
+
                 Console.WriteLine(reader.ReadLine());
+                Console.WriteLine("    " + reader.ReadLine());
             }
             Console.WriteLine("\nPress Enter to return to Menu.");
             //helps with resource management and memory usage - according to joe "streamreader can get a bit weird"
