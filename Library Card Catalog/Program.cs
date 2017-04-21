@@ -16,7 +16,7 @@ namespace Library_Card_Catalog
 
         public static string Path { get; set; }
 
-        List<Books> myBooks = new List<Books>();
+        static List<Books>  myBooks = new List<Books>();
 
         static void Main(string[] args)
         {
@@ -57,10 +57,9 @@ namespace Library_Card_Catalog
                 Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
                 Console.ReadLine();
             }
-        
+
             //Immediately open the file and create a list from what's in it. Path is an important variable.
-            
-        
+            ReadFile(Path);        
 
             //do while loop that keeps running until user decides to exit
             do
@@ -155,12 +154,10 @@ namespace Library_Card_Catalog
                 //kicks book title/author out to ObjectBook method to get sorted out
                 //ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
                 //ObjectBook.AddBook(bookTitle, bookAuthor);
-                Books Booka = new Books();
-                Booka.BookTitle = bookTitle;
-                Booka.BookAuthor = bookAuthor;
-                List<Books> myBook = new List<Books>() { };
-                Books book = new Books() { BookTitle = bookTitle, BookAuthor = bookAuthor };
-                Booka.addBook(Program.Path, List<Books>);
+                Books bookA = new Books();
+                bookA.BookTitle = bookTitle;
+                bookA.BookAuthor = bookAuthor;
+                myBooks.Add(bookA);
             }
         }
     }
@@ -225,13 +222,6 @@ namespace Library_Card_Catalog
             {
                 var xmlInput = new XmlSerializer(typeof(List<Books>));
                 xmlInput.Serialize(stream, books);
-            }
-
-            using (var stream = new FileStream(Program.Path, FileMode.Open))
-            {
-                var xmlSave = new XmlSerializer(typeof(List<Books>));
-                List<Books> save = (List<Books>)xmlSave.Deserialize(stream);
-
             }
         }
     }
