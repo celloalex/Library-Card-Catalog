@@ -56,9 +56,10 @@ namespace Library_Card_Catalog
             {
                 Console.WriteLine("You are going to open the file called {0}. Press Enter.", name);
                 Console.ReadLine();
+
                 //Immediately open the file and create a list from what's in it.
                 ReadFile(Path);
-            }      
+            }
 
             //do while loop that keeps running until user decides to exit
             do
@@ -80,6 +81,7 @@ namespace Library_Card_Catalog
             } while (Program.IsRunning == true);
         }
 
+        //Opens the file and immediatly deserializes it
         public static void ReadFile(string fileName)
         {
             using (var stream = new FileStream(fileName, FileMode.Open))
@@ -144,18 +146,21 @@ namespace Library_Card_Catalog
                     break;
             }
         }
+
+        //asks user for input on what to add to catalog
         private static void AddBook()
         {
             Console.Clear();
             //asks the user what book they want to add
             Console.WriteLine("What is the title of the book you are adding?");
             string bookTitle = Console.ReadLine();
-            
+
             //follows up and asks user the author of the book they just entered
             Console.WriteLine("Who is the author of {0}?", bookTitle);
             string bookAuthor = Console.ReadLine();
 
-            if(bookTitle == "" || bookAuthor == "")
+            //Test to see if string is empty at all
+            if (bookTitle == "" || bookAuthor == "")
             {
                 Console.WriteLine("Sorry, but both the Title and the Author must contain data.");
                 Console.ReadLine();
@@ -163,8 +168,6 @@ namespace Library_Card_Catalog
             else
             {
                 //kicks book title/author out to ObjectBook method to get sorted out
-                //ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
-                //ObjectBook.AddBook(bookTitle, bookAuthor);
                 Books bookA = new Books();
                 bookA.BookTitle = bookTitle;
                 bookA.BookAuthor = bookAuthor;
@@ -172,54 +175,6 @@ namespace Library_Card_Catalog
             }
         }
     }
-    // WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY// WORKING NO CHANGEY
-    //    public class ObjectBook
-    //    {
-    //        //book properties
-    //        public string BookTitle { get; set; }
-    //        public string BookAuthor { get; set; }
-
-    //        //Constructor
-    //        public ObjectBook(string BookTitle, string BookAuthor)
-    //        {
-    //            this.BookAuthor = BookAuthor;
-    //            this.BookTitle = BookTitle;
-    //        }
-
-    //        //method to add books by accessing file and adding a book/ author line by line
-    //        //both are labeled for readability can be modified later if a bot needs to comb the program
-    //        public static void AddBook(string BookTitle, string BookAuthor)
-    //        {
-    //            //writes title to to file
-    //            string filePrintTitle = ("Title: " + BookTitle);
-    //            System.IO.File.AppendAllText(Program.Path, filePrintTitle + Environment.NewLine);
-
-    //            //writes author to file
-    //            string filePrintAuthor = ("Author: " + BookAuthor);
-    //            System.IO.File.AppendAllText(Program.Path, filePrintAuthor + Environment.NewLine);
-
-    //        }
-
-    //        //method to access file and write list of books on the console screen
-    //        public static void ListBooks()
-    //        {
-    //            StreamReader reader = System.IO.File.OpenText(Program.Path);
-    //            int count = 1;
-    //            while (!reader.EndOfStream)
-    //            {
-    //                Console.Write(count + ".) ");
-    //                count++;
-
-    //                Console.WriteLine(reader.ReadLine());
-    //                Console.WriteLine("    " + reader.ReadLine());
-    //            }
-    //            Console.WriteLine("\nPress Enter to return to Menu.");
-    //            //helps with resource management and memory usage - according to joe "streamreader can get a bit weird"
-    //            reader.Close();
-    //            reader.Dispose();
-    //        }
-
-
 
     public class Books
     {
@@ -227,6 +182,7 @@ namespace Library_Card_Catalog
         public string BookTitle { get; set; }
         public string BookAuthor { get; set; }
 
+        //Saves list of books and serializes it
         public static void saveList(string fileName, List<Books> books)
         {
             using (var stream = new FileStream(Program.Path, FileMode.Create))
@@ -237,153 +193,3 @@ namespace Library_Card_Catalog
         }
     }
 }
-
-
-////more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes//more notes
-//public class XMLWrite
-//{
-
-//    static void Main(string[] args)
-//    {
-//        WriteXML();
-//    }
-
-//    public class Book
-//    {
-//        public String title;
-//    }
-
-//    public static void WriteXML()
-//    {
-//        Book overview = new Book();
-//        overview.title = "Serialization Overview";
-//        System.Xml.Serialization.XmlSerializer writer =
-//            new System.Xml.Serialization.XmlSerializer(typeof(Book));
-
-//        var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//SerializationOverview.xml";
-//        System.IO.FileStream file = System.IO.File.Create(path);
-
-//        writer.Serialize(file, overview);
-//        file.Close();
-//    }
-//}
-
-
-
-////NOTES GALORE LOOK BELOW
-//                |
-//                |
-//                |
-//                |   
-//             \  | /
-//              \  /
-//               \/
-
-//     static void WriteXML()
-// {
-//     AddBook();
-// }
-
-// public class Book
-// {
-//     public String title;
-// }
-
-//// public static void AddBook()
-//{
-
-
-//Console.WriteLine("What is the name of the book that you want to add?");
-//string bookName = Console.ReadLine();
-
-//Console.WriteLine("Who is the author of this book?");
-//string bookAuthor = Console.ReadLine();
-
-//System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(Book));
-
-//var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-
-//XmlElement name = .CreateElement("Name");
-//name.InnerText = "Tushar";
-//XmlElement age = .CreateElement("Age");
-//age.InnerText = "24";
-
-
-
-
-
-//This Creates a file on the desktop 
-//var path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//Library Card Catalog.xml";
-//System.IO.FileStream file = System.IO.File.Create(path);
-
-
-
-
-//static void Main()
-//{
-//    XmlDocument doc = new XmlDocument();
-//    XmlElement root = doc.CreateElement("Login");
-//    XmlElement id = doc.CreateElement("id");
-//    id.SetAttribute("userName", "Tushar");
-//    id.SetAttribute("passWord", "Tushar");
-//    XmlElement name = doc.CreateElement("Name");
-//    name.InnerText = "Tushar";
-//    XmlElement age = doc.CreateElement("Age");
-//    age.InnerText = "24";
-
-//    id.AppendChild(name);
-//    id.AppendChild(age);
-//    root.AppendChild(id);
-//    doc.AppendChild(root);
-
-//    doc.Save("test.xml");
-//}
-//}
-
-
-
-//public class Robot : IDisposable
-//{
-//    private static List<bool> UsedCounter = new List<bool>();
-//    private static object Lock = new object();
-
-//    public int ID { get; private set; }
-
-//    public Robot()
-//    {
-
-//        lock (Lock)
-//        {
-//            int nextIndex = GetAvailableIndex();
-//            if (nextIndex == -1)
-//            {
-//                nextIndex = UsedCounter.Count;
-//                UsedCounter.Add(true);
-//            }
-
-//            ID = nextIndex;
-//        }
-//    }
-
-//    public void Dispose()
-//    {
-//        lock (Lock)
-//        {
-//            UsedCounter[ID] = false;
-//        }
-//    }
-
-
-//    private int GetAvailableIndex()
-//    {
-//        for (int i = 0; i < UsedCounter.Count; i++)
-//        {
-//            if (UsedCounter[i] == false)
-//            {
-//                return i;
-//            }
-//        }
-
-//        // Nothing available.
-//        return -1;
-//    }
