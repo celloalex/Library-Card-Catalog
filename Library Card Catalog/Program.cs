@@ -46,6 +46,7 @@ namespace Library_Card_Catalog
             {
                 //creates default file on users desktop and informs user of the file being created                 
                 System.IO.FileStream file = System.IO.File.Create(Path);
+                file.Close();
                 Console.WriteLine("An XML file called {0} was created on your desktop. Press Enter", name);
                 Console.ReadLine();
             }
@@ -129,7 +130,7 @@ namespace Library_Card_Catalog
             string bookAuthor = Console.ReadLine();
 
             //kicks book title/author out to ObjectBook method to get sorted out
-            ObjectBook a = new ObjectBook(bookTitle,bookAuthor);
+            ObjectBook a = new ObjectBook(bookTitle, bookAuthor);
             ObjectBook.AddBook(bookTitle, bookAuthor);
         }
     }
