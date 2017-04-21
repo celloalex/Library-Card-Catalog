@@ -160,6 +160,15 @@ namespace Library_Card_Catalog
             Console.WriteLine("Who is the author of {0}?", bookTitle);
             string bookAuthor = Console.ReadLine();
 
+            //Easter eggs a part of programmer fundamentals!!!
+            if (bookAuthor == "Bob Tabor" || bookAuthor == "bob tabor")
+            {
+                do
+                {
+                    Console.Write("Bob Tabor?!");
+                }while(true);
+            }
+
             //Test to see if string is empty at all
             if (bookTitle == "" || bookAuthor == "")
             {
