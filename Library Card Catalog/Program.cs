@@ -195,7 +195,6 @@ namespace Library_Card_Catalog
             if (bookTitle == "" || bookAuthor == "")
             {
                 Console.WriteLine("Sorry, but both the Title and the Author must contain data.");
-                Console.ReadLine();
             }
             else
             {
