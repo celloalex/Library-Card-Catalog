@@ -159,7 +159,7 @@ namespace Library_Card_Catalog
             int i = 1;
             foreach (var book in myBooks)
             {
-                Console.WriteLine("{2}) Title: {0}\n   Author: {1}\n", book.BookTitle, book.BookAuthor, i);
+                Console.WriteLine("{0}) Title: {1}\n   Author: {2}\n", i, book.BookTitle, book.BookAuthor);
                 i++;
             }
         }
