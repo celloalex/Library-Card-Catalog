@@ -26,6 +26,7 @@ namespace Library_Card_Catalog
             Console.WriteLine("My Library Program \n(press enter)");
             Console.ReadLine();
 
+            //prompts user to enter their own file name or to use default file that will automatically be created
             Console.Clear();
             Console.WriteLine("To begin, we need to open your XML file.");
             Console.WriteLine("Please input a filename that you would like to read." +
@@ -107,16 +108,13 @@ namespace Library_Card_Catalog
         {
             Console.Clear();
             Console.WriteLine("Library Options:");
+
+            //Display options to User
             Console.WriteLine("1) List of all of our books");
             Console.WriteLine("2) Add a Book to our catalog");
-//<<<<<<< XML-Branch
             Console.WriteLine("3) Remove a Book from our catalog");
             Console.WriteLine("4) Save all changes and exit the program");
-
-            Console.WriteLine("3) Exit the program");
-//>>>>>>> master
-            Console.WriteLine();
-            Console.WriteLine("Please select one of the following choices and press Enter.");
+            Console.WriteLine("\nPlease select one of the following choices and press Enter.");
         }
 
         //Evaluates user Input from Main Menu 
@@ -158,18 +156,21 @@ namespace Library_Card_Catalog
             }
         }
 
-    private static void ListBooks()
+        //lists books for the user to see what books are in catalog
+        private static void ListBooks()
         {
-            int i = 1;
+            //list starts at 1 (not 0)
+            int i = 1; 
+            //goes through each iteration of book and displays as written
             foreach (var book in myBooks)
             {
                 Console.WriteLine("{2}) Title: {0}\n   Author: {1}\n", book.BookTitle, book.BookAuthor, i);
                 i++;
             }
         }
-        
-    //asks user for input on what to add to catalog
-    private static void AddBook()
+
+        //asks user for input on what to add to catalog
+        private static void AddBook()
         {
             Console.Clear();
             Console.WriteLine("Awesome! Let's add a new book to our catalog.");
@@ -187,7 +188,7 @@ namespace Library_Card_Catalog
                 do
                 {
                     Console.Write("Bob Tabor?!");
-                }while(true);
+                } while (true);
             }
 
             //Test to see if string is empty at all
@@ -209,7 +210,7 @@ namespace Library_Card_Catalog
         private static void RemoveBook()
         {
             Console.Clear();
-            Console.WriteLine("Alrigh! Let's remove a book.");
+            Console.WriteLine("Alright! Let's remove a book.");
             ListBooks();
             //asks the user what book they want to remove
             Console.WriteLine("What is the number of the book you would like to remove? \nPress \"Enter\" to exit.");
@@ -234,9 +235,8 @@ namespace Library_Card_Catalog
                     Console.Clear();
                     Console.WriteLine("You didn't select a proper number.");
                 }
-            }           
+            }
         }
-
     }
 
     public class Books
