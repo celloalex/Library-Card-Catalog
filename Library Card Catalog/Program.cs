@@ -107,7 +107,7 @@ namespace Library_Card_Catalog
         {
             Console.Clear();
             Console.WriteLine("Library Options:");
-            Console.WriteLine("1) List of all our books");
+            Console.WriteLine("1) List of all of our books");
             Console.WriteLine("2) Add a Book to our catalog");
             Console.WriteLine("3) Remove a Book from our catalog");
             Console.WriteLine("4) Save all changes and exit the program");
@@ -123,7 +123,7 @@ namespace Library_Card_Catalog
             switch (userInput)
             {
                 case 1: //List of all books
-                    Console.WriteLine("Fantastic this is a list of all our books:\n");
+                    Console.WriteLine("Fantastic! This is a list of all our books:\n");
                     ListBooks();
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
@@ -159,7 +159,7 @@ namespace Library_Card_Catalog
             int i = 1;
             foreach (var book in myBooks)
             {
-                Console.WriteLine("{2}) Title: {0} Author: {1}\n", book.BookTitle, book.BookAuthor, i);
+                Console.WriteLine("{2}) Title: {0}\n   Author: {1}\n", book.BookTitle, book.BookAuthor, i);
                 i++;
             }
         }
@@ -168,7 +168,7 @@ namespace Library_Card_Catalog
     private static void AddBook()
         {
             Console.Clear();
-            Console.WriteLine("Awesome! Lets add a new book to our catalog.");
+            Console.WriteLine("Awesome! Let's add a new book to our catalog.");
             //asks the user what book they want to add
             Console.WriteLine("What is the title of the book you are adding?");
             string bookTitle = Console.ReadLine();
