@@ -109,8 +109,12 @@ namespace Library_Card_Catalog
             Console.WriteLine("Library Options:");
             Console.WriteLine("1) List of all of our books");
             Console.WriteLine("2) Add a Book to our catalog");
+//<<<<<<< XML-Branch
             Console.WriteLine("3) Remove a Book from our catalog");
             Console.WriteLine("4) Save all changes and exit the program");
+
+            Console.WriteLine("3) Exit the program");
+//>>>>>>> master
             Console.WriteLine();
             Console.WriteLine("Please select one of the following choices and press Enter.");
         }
