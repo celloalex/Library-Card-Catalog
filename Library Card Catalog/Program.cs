@@ -262,7 +262,11 @@ namespace Library_Card_Catalog
                 int num = Convert.ToInt32(numberString) - 1;
                 if (num > 0 && num < myBooks.Count())
                 {
+                    //removes the book from the list (gets inserted later)
                     myBooks.RemoveAt(num);
+
+                    //decided not to clear the console just incase the user user forgot the original title/author
+                    //this way they can still use it as a reference in the event they only wanted to change one variable(author/title)
 
                     Console.WriteLine("Awesome! Let's change this book in our catalog.");
 
