@@ -218,6 +218,7 @@ namespace Library_Card_Catalog
             Console.Clear();
             Console.WriteLine("Alright! Let's remove a book.");
             ListBooks();
+
             //asks the user what book they want to remove
             Console.WriteLine("What is the number of the book you would like to remove? \nPress \"Enter\" to exit.");
             string numberString = Console.ReadLine();
@@ -249,6 +250,7 @@ namespace Library_Card_Catalog
             Console.Clear();
             Console.WriteLine("Alright! Let's change a book.");
             ListBooks();
+
             //asks the user what book they want to remove
             Console.WriteLine("What is the number of the book you would like to change? \nPress \"Enter\" to exit.");
             string numberString = Console.ReadLine();
