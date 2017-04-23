@@ -113,7 +113,8 @@ namespace Library_Card_Catalog
             Console.WriteLine("1) List of all of our books");
             Console.WriteLine("2) Add a Book to our catalog");
             Console.WriteLine("3) Remove a Book from our catalog");
-            Console.WriteLine("4) Save all changes and exit the program");
+            Console.WriteLine("4) Change a Book in our current catalog");
+            Console.WriteLine("5) Save all changes and exit the program");
             Console.WriteLine("\nPlease select one of the following choices and press Enter.");
         }
 
@@ -143,7 +144,13 @@ namespace Library_Card_Catalog
                     Console.ReadLine();
                     break;
 
-                case 4: //Save and Exit
+                case 4: //Change a book
+                    ChangeBook();
+                    Console.WriteLine("Press Enter to return to Menu.");
+                    Console.ReadLine();
+                    break;
+
+                case 5: //Save and Exit
                     Console.WriteLine("Thank you for visiting our library!");
                     Books.saveList(Path, myBooks);
                     Program.IsRunning = false;
@@ -198,7 +205,7 @@ namespace Library_Card_Catalog
             }
             else
             {
-                //kicks book title/author out to ObjectBook method to get sorted out
+                //adds book to end of list
                 Books bookA = new Books();
                 bookA.BookTitle = bookTitle;
                 bookA.BookAuthor = bookAuthor;
@@ -226,6 +233,54 @@ namespace Library_Card_Catalog
                 {
                     myBooks.RemoveAt(num);
                     //clears the screen to show removed book
+                    Console.Clear();
+                    ListBooks();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You didn't select a proper number.");
+                }
+            }
+        }
+
+        private static void ChangeBook()
+        {
+            Console.Clear();
+            Console.WriteLine("Alright! Let's change a book.");
+            ListBooks();
+            //asks the user what book they want to remove
+            Console.WriteLine("What is the number of the book you would like to change? \nPress \"Enter\" to exit.");
+            string numberString = Console.ReadLine();
+            if (numberString == "")
+            {
+                Console.Clear();
+                Console.WriteLine("It doesn't look like you want to delete a book.");
+            }
+            else
+            {
+                int num = Convert.ToInt32(numberString) - 1;
+                if (num > 0 && num < myBooks.Count())
+                {
+                    myBooks.RemoveAt(num);
+
+                    Console.WriteLine("Awesome! Let's change this book in our catalog.");
+
+                    //asks the user to re-enter book title
+                    Console.WriteLine("What is the new Title of the book?");
+                    string bookTitle = Console.ReadLine();
+
+                    //ask the user to re-enter book author
+                    Console.WriteLine("Who is the new author of {0}?", bookTitle);
+                    string bookAuthor = Console.ReadLine();
+
+                    //inserts book where specified 
+                    Books bookA = new Books();
+                    bookA.BookTitle = bookTitle;
+                    bookA.BookAuthor = bookAuthor;
+                    myBooks.Insert(num, bookA);
+
+                    //clears the screen to show changed book
                     Console.Clear();
                     ListBooks();
                 }
