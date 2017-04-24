@@ -111,11 +111,10 @@ namespace Library_Card_Catalog
 
             //Display options to User
             Console.WriteLine("1) List of all of our books");
-            Console.WriteLine("2) Sort book list alphabetically");
-            Console.WriteLine("3) Add a Book to our catalog");
-            Console.WriteLine("4) Remove a Book from our catalog");
-            Console.WriteLine("5) Change a Book in our current catalog");
-            Console.WriteLine("6) Save all changes and exit the program");
+            Console.WriteLine("2) Add a Book to our catalog");
+            Console.WriteLine("3) Remove a Book from our catalog");
+            Console.WriteLine("4) Change a Book in our current catalog");
+            Console.WriteLine("5) Save all changes and exit the program");
             Console.WriteLine("\nPlease select one of the following choices and press Enter.");
         }
 
@@ -133,35 +132,25 @@ namespace Library_Card_Catalog
                     Console.ReadLine();
                     break;
 
-                case 2: //Sort list alphabetically
-                    Console.WriteLine("Stupendous! Your list has just been reordered alphabetically.");
-                    myBooks.Sort((book1, book2) => string.Compare(book1.BookTitle, book2.BookTitle));
-                    //myBooks = myBooks.OrderBy(x => x.BookTitle).ToList(); Also works
-                    ListBooks();
-                    Console.WriteLine("Press Enter to return to Menu.");
-                    Console.ReadLine();
-                    break;
-
-
-                case 3: //Add a book
+                case 2: //Add a book
                     AddBook();
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
 
-                case 4: //Remove a book
+                case 3: //Remove a book
                     RemoveBook();
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
 
-                case 5: //Change a book
+                case 4: //Change a book
                     ChangeBook();
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
 
-                case 6: //Save and Exit
+                case 5: //Save and Exit
                     Console.WriteLine("Thank you for visiting our library!");
                     Books.saveList(Path, myBooks);
                     Program.IsRunning = false;
@@ -222,6 +211,7 @@ namespace Library_Card_Catalog
                 bookA.BookAuthor = bookAuthor;
                 myBooks.Add(bookA);
             }
+            SortBook();
         }
 
         private static void RemoveBook()
@@ -307,6 +297,12 @@ namespace Library_Card_Catalog
                     Console.WriteLine("You didn't select a proper number.");
                 }
             }
+            SortBook();
+        }
+        private static void SortBook()
+        {
+            myBooks.Sort((book1, book2) => string.Compare(book1.BookTitle, book2.BookTitle));
+            //myBooks = myBooks.OrderBy(x => x.BookTitle).ToList(); Also works
         }
     }
 
