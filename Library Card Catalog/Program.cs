@@ -134,6 +134,7 @@ namespace Library_Card_Catalog
 
                 case 2: //Add a book
                     AddBook();
+                    SortBook(); //sorts book to always maintain list in alphabetical order
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
@@ -146,6 +147,7 @@ namespace Library_Card_Catalog
 
                 case 4: //Change a book
                     ChangeBook();
+                    SortBook(); //Sorts book to always maintain a list in alphabetical order
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
@@ -211,7 +213,6 @@ namespace Library_Card_Catalog
                 bookA.BookAuthor = bookAuthor;
                 myBooks.Add(bookA);
             }
-            SortBook();
         }
 
         private static void RemoveBook()
@@ -248,6 +249,7 @@ namespace Library_Card_Catalog
 
         private static void ChangeBook()
         {
+            //prompts user what they are going to do 
             Console.Clear();
             Console.WriteLine("Alright! Let's change a book.");
             ListBooks();
@@ -263,7 +265,7 @@ namespace Library_Card_Catalog
             else
             {
                 int num = Convert.ToInt32(numberString) - 1;
-                if (num > 0 && num < myBooks.Count())
+                if (num > -1 && num < myBooks.Count())
                 {
                     //removes the book from the list (gets inserted later)
                     myBooks.RemoveAt(num);
@@ -297,12 +299,15 @@ namespace Library_Card_Catalog
                     Console.WriteLine("You didn't select a proper number.");
                 }
             }
-            SortBook();
         }
+
         private static void SortBook()
         {
+            //Sorts mybooks by evaluating title (by default sorts in ascending order
             myBooks.Sort((book1, book2) => string.Compare(book1.BookTitle, book2.BookTitle));
-            //myBooks = myBooks.OrderBy(x => x.BookTitle).ToList(); Also works
+
+            //Alternative method that also works:
+            //myBooks = myBooks.OrderBy(x => x.BookTitle).ToList();
         }
     }
 
