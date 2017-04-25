@@ -16,7 +16,7 @@ namespace Library_Card_Catalog
 
         public static string Path { get; set; }
 
-        static List<Books> myBooks = new List<Books>();
+        public static List<Books> myBooks = new List<Books>();
 
         static void Main(string[] args)
         {
@@ -230,12 +230,13 @@ namespace Library_Card_Catalog
             else
             {
                 int num = Convert.ToInt32(numberString) - 1;
-                if (num > 0 && num < myBooks.Count())
+                if (num > -1 && num < myBooks.Count())
                 {
                     myBooks.RemoveAt(num);
                     //clears the screen to show removed book
                     Console.Clear();
                     ListBooks();
+                    
                 }
                 else
                 {
@@ -296,7 +297,7 @@ namespace Library_Card_Catalog
                     Console.WriteLine("You didn't select a proper number.");
                 }
             }
-        }
+        }        
     }
 
     public class Books
