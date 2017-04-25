@@ -134,7 +134,6 @@ namespace Library_Card_Catalog
 
                 case 2: //Add a book
                     AddBook();
-                    SortBook(); //sorts book to always maintain list in alphabetical order
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
@@ -147,7 +146,6 @@ namespace Library_Card_Catalog
 
                 case 4: //Change a book
                     ChangeBook();
-                    SortBook(); //Sorts book to always maintain a list in alphabetical order
                     Console.WriteLine("Press Enter to return to Menu.");
                     Console.ReadLine();
                     break;
@@ -168,6 +166,7 @@ namespace Library_Card_Catalog
         //lists books for the user to see what books are in catalog
         private static void ListBooks()
         {
+            SortBook(); //Sorts book to always maintain a list in alphabetical order
             //list starts at 1 (not 0)
             int i = 1; 
             //goes through each iteration of book and displays as written
